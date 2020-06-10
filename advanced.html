@@ -6,7 +6,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+   	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
     <style>
 		body {
@@ -33,17 +34,17 @@
 			height: 20em;
 		}
 
-	#container2 {
-		margin-top: 25em;
-		display: flex;
-		flex-wrap: wrap;
-	}
+		#container2 {
+			margin-top: 25em;
+			display: flex;
+			flex-wrap: wrap;
+		}
 
-	#container1 {
-		position: absolute;
-		top: 3em;
-		left: 3em;
-	}
+		#container1 {
+			position: absolute;
+			top: 3em;
+			left: 3em;
+		}
 
 
     </style>
@@ -52,47 +53,64 @@
 
 <body>
 <div id="container1">
-	<div id="card1" class="card">1</div>
-	<div id="card2" class="card">2</div>
-	<div id="card3" class="card">3</div>
-	<div id="card4" class="card">4</div>
-	<div id="card5" class="card">5</div>
-	<div id="card6" class="card">6</div>
-	<div id="card7" class="card">7</div>
-	<div id="card8" class="card">8</div>
-	<div id="card9" class="card">9</div>
-	<div id="card10" class="card">10</div>
+	<div id="card1" class="card" value="1">1</div>
+	<div id="card2" class="card" value="2">2</div>
+	<div id="card3" class="card" value="3">3</div>
+	<div id="card4" class="card" value="4">4</div>
+	<div id="card5" class="card" value="5">5</div>
+	<div id="card6" class="card" value="6">6</div>
+	<div id="card7" class="card" value="7">7</div>
+	<div id="card8" class="card" value="8">8</div>
+	<div id="card9" class="card" value="9">9</div>
+	<div id="card10" class="card" value="10">10</div>
 </div>
 
 
 <div id="container2">
-	<div id="slot1" class="slot">Slot 1</div>
-	<div id="slot2" class="slot">Slot 2</div>
-	<div id="slot3" class="slot">Slot 3</div>
-	<div id="slot4" class="slot">Slot 4</div>
-	<div id="slot5" class="slot">Slot 5</div>
-	<div id="slot6" class="slot">Slot 6</div>
-	<div id="slot7" class="slot">Slot 7</div>
-	<div id="slot8" class="slot">Slot 8</div>
-	<div id="slot9" class="slot">Slot 9</div>
-	<div id="slot10" class="slot">Slot 10</div>
+	<div id="slot1" class="slot" value="1">Slot 1</div>
+	<div id="slot2" class="slot" value="2">Slot 2</div>
+	<div id="slot3" class="slot" value="3">Slot 3</div>
+	<div id="slot4" class="slot" value="4">Slot 4</div>
+	<div id="slot5" class="slot" value="5">Slot 5</div>
+	<div id="slot6" class="slot" value="6">Slot 6</div>
+	<div id="slot7" class="slot" value="7">Slot 7</div>
+	<div id="slot8" class="slot" value="8">Slot 8</div>
+	<div id="slot9" class="slot" value="9">Slot 9</div>
+	<div id="slot10" class="slot" value="10">Slot 10</div>
 </div>
 
 
 <script>
+$(document).ready(function() {
 
 	for (i=0; i<10;i++){
 		var x = Math.round(Math.random()*100)
 		console.log(x)
-		$("#card"+i).css("z-index", x)
-		$(function () {
-			$("#card"+i).draggable()
-		})
+		$("#card"+(i+1)).css("z-index", x)
 	}
 
+$(".card").draggable({revert: true})
+$(".slot").droppable({drop: cardDrop})
 
+function cardDrop (event, ui){
+	var slotNumber = $(this).attr("value")
+	var cardNumber = ui.draggable.attr("value")
+	console.log(slotNumber, cardNumber)
+	if (slotNumber == cardNumber){
 
+		ui.draggable.draggable({
+			disabled: true,
+			revert: false
+		})
+		ui.draggable.position({
+    	of: $(this), my: 'left top', at: 'left top'
+    	})
+    	ui.draggable.css("background-color", "green")
+	}
 
+}
+
+});
 </script>
 
 </body>
