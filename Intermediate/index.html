@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -6,12 +7,52 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <style>
+    	img {
+    		width: 10vw;
+    	}
+    	body {
+    		display: flex;
+    	}
+    	div {
+    		margin: 1em;
+    	}
+    </style>
 </head>
 
 <body>
 
 </body>
+<script type="text/javascript" src="familyMem.json"></script>
 <script>
+	var fam = JSON.parse(fam)
+
+	for (let i=0; i<fam.length; i++){
+		$("body").append(
+			"<div id='mem"+[i]+"'><img src='img/"+fam[i].image+"'><p><b>"+fam[i].name+"</b></p><p>"+fam[i].relation+"</p>"
+			)
+	}
+
+	for (let i=0; i<fam.length; i++){
+		fam[i].show=false
+	}
+	for (let i=0; i<fam.length; i++){
+		$("#mem"+i).on("click", function(){
+			if(fam[i].show==false){
+			$(this).append("<p class='shown'><b>Hobbys: </b>"+fam[i].hobbys+"</p><p class='shown'><b>Favourite Movie: </b>"+fam[i].favouritemovie+"</p>");
+			fam[i].show=true
+			}
+			else {
+				$(".shown").hide();
+				fam[i].show=false
+			}
+		})
+	}
+
+	for (let i=0; i<fam.length; i++){
+	$("#mem"+i).on("dblclick", function(){
+		$(this).hide()})
+	}
 </script>
 
 </html>

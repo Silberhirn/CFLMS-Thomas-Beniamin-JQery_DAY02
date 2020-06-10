@@ -1,0 +1,98 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+    <style>
+		body {
+			background-color: gray;
+		}
+
+		.card {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			background-color: white;
+			position: absolute;
+			width: 10em;
+			height: 20em;
+		}
+
+		.slot {
+			margin: 3em;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			background-color: white;
+			width: 10em;
+			height: 20em;
+		}
+
+	#container2 {
+		margin-top: 25em;
+		display: flex;
+		flex-wrap: wrap;
+	}
+
+	#container1 {
+		position: absolute;
+		top: 3em;
+		left: 3em;
+	}
+
+
+    </style>
+
+</head>
+
+<body>
+<div id="container1">
+	<div id="card1" class="card">1</div>
+	<div id="card2" class="card">2</div>
+	<div id="card3" class="card">3</div>
+	<div id="card4" class="card">4</div>
+	<div id="card5" class="card">5</div>
+	<div id="card6" class="card">6</div>
+	<div id="card7" class="card">7</div>
+	<div id="card8" class="card">8</div>
+	<div id="card9" class="card">9</div>
+	<div id="card10" class="card">10</div>
+</div>
+
+
+<div id="container2">
+	<div id="slot1" class="slot">Slot 1</div>
+	<div id="slot2" class="slot">Slot 2</div>
+	<div id="slot3" class="slot">Slot 3</div>
+	<div id="slot4" class="slot">Slot 4</div>
+	<div id="slot5" class="slot">Slot 5</div>
+	<div id="slot6" class="slot">Slot 6</div>
+	<div id="slot7" class="slot">Slot 7</div>
+	<div id="slot8" class="slot">Slot 8</div>
+	<div id="slot9" class="slot">Slot 9</div>
+	<div id="slot10" class="slot">Slot 10</div>
+</div>
+
+
+<script>
+
+	for (i=0; i<10;i++){
+		var x = Math.round(Math.random()*100)
+		console.log(x)
+		$("#card"+i).css("z-index", x)
+		$(function () {
+			$("#card"+i).draggable()
+		})
+	}
+
+
+
+
+</script>
+
+</body>
