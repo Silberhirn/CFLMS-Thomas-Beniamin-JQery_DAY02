@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>CSS Selectors</title>
+	<link rel="stylesheet" href="styles.css" />
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<style>
+		img {
+			width: 20vw;
+		}
+
+		h1 {
+			font-size: 30pt;
+		}
+	</style>
+</head>
+
+<body>
+	<h1></h1>
+	<img id="bell" src="img/1-2-christmas-bell-png-image.png">
+	<img id="santa" src="img/santa-claus.png">
+	<img id="present" src="img/White_Gift_Box_with_Red_Bow_PNG_Image_2048x.png">
+
+	<script>
+		$(document).ready(function() {
+
+
+$("img").on("click", display)
+
+function display (){
+	var x = "You clicked on the "+$(this).attr("id")
+	$("h1").text(x)
+}
+});
+	</script>
+</body>
+</html>
