@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <style>
+        img {
+            width: 10vw;
+            height: 10vw;
+        }
+        
+        div {
+            display: flex;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="row1">
+        <img src="img/White_Gift_Box_with_Red_Bow_PNG_Image_2048x.png" alt="">
+        <img class="santa" src="img/santa-claus.png" alt="">
+        <img src="img/White_Gift_Box_with_Red_Bow_PNG_Image_2048x.png" alt="">
+    </div>
+    <div class="row2">
+        <img src="img/White_Gift_Box_with_Red_Bow_PNG_Image_2048x.png" alt="">
+        <img class="santa" src="img/santa-claus.png" alt="">
+        <img src="img/White_Gift_Box_with_Red_Bow_PNG_Image_2048x.png" alt="">
+    </div>
+    <div class="row3">
+        <img class="santa" src="img/santa-claus.png" alt="">
+        <img src="img/White_Gift_Box_with_Red_Bow_PNG_Image_2048x.png" alt="">
+        <img class="santa" src="img/santa-claus.png" alt="">
+    </div>
+    <script>
+        $('.santa').click(function() {
+            $(this).hide()
+        })
+    </script>
+</body>
+
+</html>
